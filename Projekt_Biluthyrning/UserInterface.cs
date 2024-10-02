@@ -13,7 +13,7 @@ namespace Projekt_Biluthyrning {
             Console.WriteLine("[PRESS ANY KEY TO CONTINUE]");
 			Console.ReadKey();
 			Console.Clear();
-
+			
 		}
 
 		public void MainPage() {
