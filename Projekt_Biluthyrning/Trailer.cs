@@ -12,13 +12,19 @@ namespace Projekt_Biluthyrning {
 		protected string _braked;
 		protected string _unbraked;
 
-		public Trailer(string inputTrailerType, int inputMaxLoad, int inputVolume, string inputBraked, string inputUnbraked, string inputGearBox, string inputFuelInfo, string inputCarType)  : base(inputGearBox, inputFuelInfo, inputCarType) {
+		public Trailer(string inputTrailerType, int inputMaxLoad, int inputVolume, string inputBraked, string inputUnbraked, string inputTotalTyres, string inputFuelInfo, string inputVehicleType)  : base(inputTotalTyres, inputFuelInfo, inputVehicleType) {
 			_trailerType = inputTrailerType;
 			_maxLoad = inputMaxLoad;
 			_volume = inputVolume;
 			_braked = inputBraked;
 			_unbraked = inputUnbraked;
 		}
+
+		List<Trailer> ListOfTrailers = new List<Trailer> {
+			new Trailer("Enclosed trailer", 1000, 5, "Braked", "", "4", "None", "Trailer" ),
+			new Trailer("Grtaing trailer", 500, 2, "", "Unbraked", "2", "None", "Trailer")
+		};
+
 
 	}
 }

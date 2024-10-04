@@ -25,7 +25,5 @@ namespace Projekt_Biluthyrning {
 			_startDate = inputStartDate;
 			_endDate = inputEndDate;
 		}
-
-
 	}
 }

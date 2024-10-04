@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace Projekt_Biluthyrning {
 	internal class VehicleInfo {
-		public string GearBox;
+		public string TotalTyres;
 		public string FuelInfo;
-		public string CarType;
+		public string VehicleType;
 
-		public VehicleInfo(string inputGearBox, string inputFuelInfo, string inputCarType) {
-			GearBox = inputGearBox;
+		public VehicleInfo(string inputTotalTyres, string inputFuelInfo, string inputVehicleType) {
+			TotalTyres = inputTotalTyres;
 			FuelInfo = inputFuelInfo;
-			CarType = inputCarType;
+			VehicleType = inputVehicleType;
+		}
+
+		public void PrintVehicle() {
+            Console.WriteLine("Your vehicle type: " + VehicleType + " FuelInfo: " + FuelInfo + " Tires: " + TotalTyres);
 		}
 	}
 }
