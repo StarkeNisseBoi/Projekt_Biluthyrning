@@ -22,7 +22,7 @@ namespace Projekt_Biluthyrning {
 
 		List<Trailer> ListOfTrailers = new List<Trailer> {
 			new Trailer("Enclosed trailer", 1000, 5, "Braked", "", "4", "None", "Trailer" ),
-			new Trailer("Grtaing trailer", 500, 2, "", "Unbraked", "2", "None", "Trailer")
+			new Trailer("Grating trailer", 500, 2, "", "Unbraked", "2", "None", "Trailer")
 		};
 
 

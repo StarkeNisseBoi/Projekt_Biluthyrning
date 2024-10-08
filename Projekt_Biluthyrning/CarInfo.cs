@@ -21,7 +21,7 @@ namespace Projekt_Biluthyrning {
 			_gearBox = inputGearbox;
 		}
 
-		List<CarInfo> ListOfAvaiableCars = new List<CarInfo>() {
+		static List<CarInfo> ListOfAvaiableCars = new List<CarInfo>() {
 			new CarInfo(250, 1000,4,"yes","Automatic", "4", "Diesel", "Sedan"),
 			new CarInfo(120, 0,4,"no","Manual", "4", "Petrol", "Sedan"),
 			new CarInfo(400, 750,4,"yes","Automatic", "4","Electric", "Sedan"),
@@ -40,9 +40,9 @@ namespace Projekt_Biluthyrning {
 
 		};
 
-		public List<CarInfo> MethodOfElimination(string inputCarType, string inputGearbox, string inputFueltype, string inputDrivetrain) {
+		public static List<CarInfo> MethodOfElimination(string inputCarType, string inputGearbox, string inputFueltype, string inputTowHitch) {
 			List<CarInfo> AvailableCars = new List<CarInfo>();
-			for (int i = 0; i <= ListOfAvaiableCars.Count; i++) {
+			for (int i = 0; i < ListOfAvaiableCars.Count; i++) {
 				if (ListOfAvaiableCars[i].VehicleType == inputCarType && ListOfAvaiableCars[i]._gearBox == inputGearbox && ListOfAvaiableCars[i].FuelInfo == inputFueltype) {
 					AvailableCars.Add(ListOfAvaiableCars[i]);
 				}

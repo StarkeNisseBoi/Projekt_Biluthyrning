@@ -16,6 +16,9 @@ namespace Projekt_Biluthyrning {
 			VehicleType = inputVehicleType;
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public void PrintVehicle() {
             Console.WriteLine("Your vehicle type: " + VehicleType + " FuelInfo: " + FuelInfo + " Tires: " + TotalTyres);
 		}
