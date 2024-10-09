@@ -14,8 +14,12 @@ namespace Projekt_Biluthyrning {
 			userInterface.BookingDetail();
 			Console.Clear();
 			userInterface.MainPage();
+			userInterface.TrailerType();
+			userInterface.TrailerTypeinfo();
+			userInterface.FuelType();
+			userInterface.Gearbox();
+			userInterface.TowHitch();
 
-			
 		}
 	}
 }

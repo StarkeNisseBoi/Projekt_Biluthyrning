@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace Projekt_Biluthyrning {
 	internal class UserInterface {
+		protected  string _chosenVehicle;
+		protected  string _chosenTrailerType;
+		protected string _chosenTrailerTypeInfo;
+		protected string _chosenFuelType;
+		protected string _chosenGearbox;
+		protected string _chosenTowHitch;
+
 		public void StarPage() {
             Console.WriteLine("  ----------------------------" );
             Console.WriteLine("   Welcome! Bestrent.com");
@@ -104,21 +111,25 @@ namespace Projekt_Biluthyrning {
 			Console.WriteLine("   5. Trailer");
             Console.WriteLine("  ------------------------------------");
             Console.WriteLine("   6. Exit");
-			string ChoosenVehicle = Console.ReadLine();
 
-			if (ChoosenVehicle == "1") {
-				Console.Clear();
+			_chosenVehicle = Console.ReadLine();
 
-			} else if (ChoosenVehicle == "2") {
+			if (_chosenVehicle == "1") {
 				Console.Clear();
-			} else if (ChoosenVehicle == "3") {
+				FuelType();
+			} else if (_chosenVehicle == "2") {
 				Console.Clear();
-			} else if (ChoosenVehicle == "4"){
+				FuelType();
+			} else if (_chosenVehicle == "3") {
 				Console.Clear();
-			} else if (ChoosenVehicle == "5") {
+				FuelType();
+			} else if (_chosenVehicle == "4"){
+				Console.Clear();
+				FuelType();
+			} else if (_chosenVehicle == "5") {
 				Console.Clear();
 				TrailerType();
-			} else if (ChoosenVehicle == "6") {
+			} else if (_chosenVehicle == "6") {
 				Environment.Exit(1);
 			}
 
@@ -133,12 +144,12 @@ namespace Projekt_Biluthyrning {
             Console.WriteLine("  2. Grating trailer");
 			Console.WriteLine("  ------------------------------------");
 
-			string ChoosenTrilerType = Console.ReadLine();
+			_chosenTrailerType = Console.ReadLine();
 
-			if (ChoosenTrilerType == "1") {
+			if (_chosenTrailerType == "1") {
 				Console.Clear();
 				TrailerTypeinfo();
-			}else if (ChoosenTrilerType == "2") {
+			}else if (_chosenTrailerType == "2") {
 				Console.Clear();
 				TrailerTypeinfo();
 			}
@@ -150,13 +161,13 @@ namespace Projekt_Biluthyrning {
 			Console.WriteLine("  2. Confirm payment ");
 			Console.WriteLine("  ------------------------------------");
 
-			string ChoosenTrailerTypeInfo = Console.ReadLine();
+			_chosenTrailerTypeInfo = Console.ReadLine();
 
-			if (ChoosenTrailerTypeInfo == "1") {
+			if (_chosenTrailerTypeInfo == "1") {
 				Console.Clear();
 				MainPage();
-			} else if (ChoosenTrailerTypeInfo == "2") {
-
+			} else if (_chosenTrailerTypeInfo == "2") {
+				
 			}
 
 		}
@@ -169,15 +180,15 @@ namespace Projekt_Biluthyrning {
             Console.WriteLine("  3. Electric");
 			Console.WriteLine("  ------------------------------------");
 
-			string ChoosenFuelType = Console.ReadLine();
+			_chosenFuelType = Console.ReadLine();
 
-			if (ChoosenFuelType == "1") {
+			if (_chosenFuelType == "1") {
 				Console.Clear();
 				Gearbox();
-			}else if (ChoosenFuelType == "2") {
+			}else if (_chosenFuelType == "2") {
 				Console.Clear();
 				Gearbox();
-			} else if (ChoosenFuelType == "3") {
+			} else if (_chosenFuelType == "3") {
 				Console.Clear();
 				TowHitch();
 			}
@@ -190,12 +201,12 @@ namespace Projekt_Biluthyrning {
 			Console.WriteLine("  2. Automatic");
 			Console.WriteLine("  ------------------------------------");
 
-			string ChoosenGearbox = Console.ReadLine();
+			_chosenGearbox = Console.ReadLine();
 
-			if (ChoosenGearbox == "1") {
+			if (_chosenGearbox == "1") {
 				Console.Clear();
 				TowHitch();
-			} else if (ChoosenGearbox == "2") {
+			} else if (_chosenGearbox == "2") {
 				Console.Clear();
 				TowHitch();
 			}
@@ -208,20 +219,26 @@ namespace Projekt_Biluthyrning {
 			Console.WriteLine("  2. No");
 			Console.WriteLine("  ------------------------------------");
 
-			string ChoosenTowHitch = Console.ReadLine();
+			_chosenTowHitch = Console.ReadLine();
 
-			if (ChoosenTowHitch == "1") {
+			if (_chosenTowHitch == "1") {
 
-			}else if (ChoosenTowHitch == "2") {
+			}else if (_chosenTowHitch == "2") {
 
 			}
 
 			Console.Clear();
 
             Console.WriteLine("Here is the cars best suited for you.");
-			List<CarInfo> 
+			List<CarInfo> PossibleCars = CarInfo.MethodOfElimination(_chosenVehicle, _chosenGearbox, _chosenFuelType, _chosenTrailerType);
+			for (int i = 0; i < PossibleCars.Count; i++) {
+				Console.WriteLine(PossibleCars[i]._carModel);
+			}
+
+			Console.WriteLine("Choose which car:");
+			string inputChosenCar = Console.ReadLine();
+			int inputChosenCarAsInt = int.Parse(inputChosenCar);
+			CarInfo theChosenCar = PossibleCars[inputChosenCarAsInt];
 		}
-
-
 	}
 }
