@@ -31,10 +31,10 @@ namespace Projekt_Biluthyrning {
 
 			new CarInfo(300, 850,4,"yes","Automatic", "4", "Diesel", "Suv", "Peugeot 3800"),
 			new CarInfo(275, 1250,4,"yes","Automatic", "4", "Petrol", "Suv", "Volvo XC60"),
-			new CarInfo(500, 1000,4,"yes","Automatic", "4", "Electric", "Suv", "Mercedes EQE 53 AMG"),
+			new CarInfo(500, 1000,4,"yes","Automatic", "4", "Electric", "Suv", "Mercedes EQE-Suv 53 AMG"),
 
 			new CarInfo(300, 750,4,"yes","Manual", "4", "Petrol", "Kombi", "Mercedes C-Class"),
-			new CarInfo(300, 750,4,"yes","Manual", "4", "Petrol", "Kombi", "Mercedes C-Class"),
+			new CarInfo(300, 750,4,"yes","Automatic", "4", "Diesel", "Kombi", "Mercedes E-Class"),
 			new CarInfo(325, 1000,4,"yes","Automatic", "4", "Electric", "Kombi", "Polestar 3"),
 
 			new CarInfo(400, 0,2,"no","Automatic", "4","Petrol", "Sport", "BMW M5"),
@@ -44,8 +44,12 @@ namespace Projekt_Biluthyrning {
 		};
 
 		public static List<CarInfo> MethodOfElimination(string inputCarType, string inputGearbox, string inputFueltype, string inputTowHitch) {
+			//Console.WriteLine(inputCarType);
+			//Console.WriteLine(inputGearbox);
+			//Console.WriteLine(inputFueltype);
+			//Console.WriteLine(inputTowHitch);
 			List<CarInfo> AvailableCars = new List<CarInfo>();
-			for (int i = 0; i < ListOfAvaiableCars.Count; i++) {
+			for (int i = 0; i < ListOfAvaiableCars.Count; i++) { 
 				if (ListOfAvaiableCars[i].VehicleType == inputCarType && ListOfAvaiableCars[i]._gearBox == inputGearbox && ListOfAvaiableCars[i].FuelInfo == inputFueltype) {
 					AvailableCars.Add(ListOfAvaiableCars[i]);
 				}

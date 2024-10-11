@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Projekt_Biluthyrning {
 	internal class Booking {
-		protected string _bookingName;
-		protected int _age;
-		protected string _address;
-		protected string _mail;
-		protected string _phoneNumber;
-		protected string _pickUpLocation;
-		protected string _startDate;
-		protected string _endDate;
+		public string _bookingName;
+		public int _age;
+		public string _address;
+		public string _mail;
+		public string _phoneNumber;
+		public string _pickUpLocation;
+		public string _startDate;
+		public string _endDate;
 
 		public Booking(string inputBookingName, int inputAge, string inputAddress, string inputMail, string inputPhoneNumber, string inputPickUpLocation,string inputStartDate, string inputEndDate ) {
 			_bookingName = inputBookingName;

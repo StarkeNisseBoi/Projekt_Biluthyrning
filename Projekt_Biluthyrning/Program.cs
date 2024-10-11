@@ -10,16 +10,7 @@ namespace Projekt_Biluthyrning {
 
 			UserInterface userInterface = new UserInterface();
 			userInterface.StarPage();
-			Console.Clear();
-			userInterface.BookingDetail();
-			Console.Clear();
-			userInterface.MainPage();
-			userInterface.TrailerType();
-			userInterface.TrailerTypeinfo();
-			userInterface.FuelType();
-			userInterface.Gearbox();
-			userInterface.TowHitch();
-
+			
 		}
 	}
 }

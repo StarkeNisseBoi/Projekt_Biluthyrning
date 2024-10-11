@@ -21,10 +21,25 @@ namespace Projekt_Biluthyrning {
             Console.WriteLine("  [PRESS ANY KEY TO CONTINUE]");
 			Console.ReadKey();
 			Console.Clear();
+
+			Booking bookingLastInfo = BookingDetail();
+
+			MainPage();
+			FuelType();
+			Gearbox();
+			TowHitch();
+			TrailerType();
 			
+
+			
+			CarInfo vehicleSpecification = CheckOut();
+			LastInfo lastInfo = new LastInfo();
+			lastInfo.Summary(bookingLastInfo, vehicleSpecification);
 		}
 
-		public void BookingDetail() {
+	
+
+		public Booking BookingDetail() {
 			Console.WriteLine("Please, write your first- and lastname.");
 			string inputName = Console.ReadLine();
 			while (inputName == "") {
@@ -82,7 +97,7 @@ namespace Projekt_Biluthyrning {
 			Console.Clear();
 
 
-			Console.WriteLine("Write the date you would like to pick up the vehicle. DD/MM/YY");
+			Console.WriteLine("Write the date you would like to pick up the vehicle. DD/MM");
 			string inputStartDate = Console.ReadLine();
 			while (inputAddress == "") {
 				Console.WriteLine("Invalid input, please try again.");
@@ -90,7 +105,7 @@ namespace Projekt_Biluthyrning {
 			}
 			Console.Clear();
 
-			Console.WriteLine("Write the date you would like to leave the vehicle. DD/MM/YY");
+			Console.WriteLine("Write the date you would like to leave the vehicle. DD/MM");
 			string inputEndDate = Console.ReadLine();
 			while (inputAddress == "") {
 				Console.WriteLine("Invalid input, please try again.");
@@ -98,8 +113,11 @@ namespace Projekt_Biluthyrning {
 			}
 			Console.Clear();
 
+			
 			Booking booking = new Booking(inputName, age, inputAddress, inputMail, inputPhoneNumber, inputPickUpLocation,inputStartDate, inputEndDate);
+			return booking;
 		}
+
 
 		public void MainPage() {
             Console.WriteLine("  Please, choose vehicle selection");
@@ -115,18 +133,23 @@ namespace Projekt_Biluthyrning {
 			_chosenVehicle = Console.ReadLine();
 
 			if (_chosenVehicle == "1") {
+				_chosenVehicle = "Suv";
 				Console.Clear();
 				FuelType();
 			} else if (_chosenVehicle == "2") {
+				_chosenVehicle = "Sedan";
 				Console.Clear();
 				FuelType();
 			} else if (_chosenVehicle == "3") {
+				_chosenVehicle = "Kombi";
 				Console.Clear();
 				FuelType();
 			} else if (_chosenVehicle == "4"){
+				_chosenVehicle = "Sport";
 				Console.Clear();
 				FuelType();
 			} else if (_chosenVehicle == "5") {
+				_chosenVehicle = "Trailer";
 				Console.Clear();
 				TrailerType();
 			} else if (_chosenVehicle == "6") {
@@ -138,7 +161,7 @@ namespace Projekt_Biluthyrning {
 
 		}
 
-		public void TrailerType() {
+		public bool TrailerType() {
 			Console.WriteLine("  ------------------------------------");
             Console.WriteLine("  1. Enclosed trailer");
             Console.WriteLine("  2. Grating trailer");
@@ -147,27 +170,31 @@ namespace Projekt_Biluthyrning {
 			_chosenTrailerType = Console.ReadLine();
 
 			if (_chosenTrailerType == "1") {
+				_chosenTrailerType = "Enclosed trailer";
 				Console.Clear();
 				TrailerTypeinfo();
 			}else if (_chosenTrailerType == "2") {
+				_chosenTrailerType = "Grating trailer";
 				Console.Clear();
-				TrailerTypeinfo();
+				return TrailerTypeinfo();
 			}
+
+			return false;
 		}
 
-		public void TrailerTypeinfo() {
+		public bool TrailerTypeinfo() {
 			Console.WriteLine("  ------------------------------------");
 			Console.WriteLine("  1. Continue to choose car");
-			Console.WriteLine("  2. Confirm payment ");
+			Console.WriteLine("  2. Confirm booking ");
 			Console.WriteLine("  ------------------------------------");
 
 			_chosenTrailerTypeInfo = Console.ReadLine();
 
 			if (_chosenTrailerTypeInfo == "1") {
 				Console.Clear();
-				MainPage();
+				return false;
 			} else if (_chosenTrailerTypeInfo == "2") {
-				
+				return true;
 			}
 
 		}
@@ -183,12 +210,16 @@ namespace Projekt_Biluthyrning {
 			_chosenFuelType = Console.ReadLine();
 
 			if (_chosenFuelType == "1") {
+				_chosenFuelType = "Petrol";
 				Console.Clear();
 				Gearbox();
 			}else if (_chosenFuelType == "2") {
+				_chosenFuelType = "Diesel";
 				Console.Clear();
 				Gearbox();
 			} else if (_chosenFuelType == "3") {
+				_chosenFuelType = "Electric";
+				_chosenGearbox = "Automatic";
 				Console.Clear();
 				TowHitch();
 			}
@@ -204,9 +235,11 @@ namespace Projekt_Biluthyrning {
 			_chosenGearbox = Console.ReadLine();
 
 			if (_chosenGearbox == "1") {
+				_chosenGearbox = "Manual";
 				Console.Clear();
 				TowHitch();
 			} else if (_chosenGearbox == "2") {
+				_chosenGearbox = "Automatic";
 				Console.Clear();
 				TowHitch();
 			}
@@ -219,26 +252,31 @@ namespace Projekt_Biluthyrning {
 			Console.WriteLine("  2. No");
 			Console.WriteLine("  ------------------------------------");
 
-			_chosenTowHitch = Console.ReadLine();
+			_chosenTowHitch = Console.ReadLine().ToLower();
 
 			if (_chosenTowHitch == "1") {
-
+				_chosenTowHitch = "yes";
+				CheckOut();
 			}else if (_chosenTowHitch == "2") {
-
+				_chosenTowHitch = "no";
+				CheckOut();
 			}
 
-			Console.Clear();
+		}
+		public CarInfo CheckOut() {
 
-            Console.WriteLine("Here is the cars best suited for you.");
+			Console.WriteLine("Here is the cars best suited for you.");
 			List<CarInfo> PossibleCars = CarInfo.MethodOfElimination(_chosenVehicle, _chosenGearbox, _chosenFuelType, _chosenTrailerType);
 			for (int i = 0; i < PossibleCars.Count; i++) {
 				Console.WriteLine(PossibleCars[i]._carModel);
 			}
 
-			Console.WriteLine("Choose which car:");
+
 			string inputChosenCar = Console.ReadLine();
 			int inputChosenCarAsInt = int.Parse(inputChosenCar);
-			CarInfo theChosenCar = PossibleCars[inputChosenCarAsInt];
+			CarInfo theChosenCar = PossibleCars[inputChosenCarAsInt - 1];
+
+			return theChosenCar;
 		}
 	}
 }
