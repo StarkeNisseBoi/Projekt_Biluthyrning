@@ -14,7 +14,11 @@ namespace Projekt_Biluthyrning {
 		protected string _chosenGearbox;
 		protected string _chosenTowHitch;
 		protected Trailer _trailer;
+		public bool HasBooked;
 
+		/// <summary>
+		/// En metod som välkommnar användaren och skriver ut användarens input vid slutförd bokning
+		/// </summary>
 		public void StarPage() {
             Console.WriteLine("  ----------------------------" );
             Console.WriteLine("   Welcome! Bestrent.com");
@@ -29,7 +33,9 @@ namespace Projekt_Biluthyrning {
 			
 			CarInfo vehicleSpecification = CheckOut();
 			LastInfo lastInfo = new LastInfo();
-			lastInfo.Summary(bookingLastInfo, vehicleSpecification, );
+
+
+			lastInfo.Summary(bookingLastInfo, vehicleSpecification, _trailer);
 
 		}
 
@@ -37,7 +43,7 @@ namespace Projekt_Biluthyrning {
 		/// <summary>
 		/// En metod som tar input om namn etc till bokning
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>booking</returns>
 		public Booking BookingDetail() {
 			Console.WriteLine("Please, write your first- and lastname.");
 			string inputName = Console.ReadLine();
@@ -117,7 +123,9 @@ namespace Projekt_Biluthyrning {
 			return booking;
 		}
 
-
+		/// <summary>
+		/// En metod som ger alternativ till användaren om vilket fordon som kan hyras
+		/// </summary>
 		public void MainPage() {
             Console.WriteLine("  Please, choose vehicle selection");
             Console.WriteLine("  ------------------------------------");
@@ -148,18 +156,27 @@ namespace Projekt_Biluthyrning {
 				Console.Clear();
 				FuelType();
 			} else if (_chosenVehicle == "5") {
-				_chosenVehicle = "Trailer";
-				Console.Clear();
-				TrailerType();
+				if (HasBooked == true) {
+					Console.WriteLine("You have already chosen a trailer.");
+					MainPage();
+				} else {
+					_chosenVehicle = "Trailer";
+					HasBooked = true;
+					Console.Clear();
+					TrailerType();
+				}
 			} else if (_chosenVehicle == "6") {
 				Environment.Exit(1);
 			}
 
 
-			CarInfo.MethodOfElimination()
+			//CarInfo.MethodOfElimination()
 
 		}
 
+		/// <summary>
+		/// En metod som skriver ut olika släpvagnssorter
+		/// </summary>
 		public void TrailerType() {
 			Console.WriteLine("  ------------------------------------");
 			Console.WriteLine("  1. Enclosed trailer");
@@ -177,25 +194,28 @@ namespace Projekt_Biluthyrning {
 				Console.Clear();
 				TrailerTypeinfo();
 			}
-			_trailer
+			_trailer = new Trailer(_chosenTrailerType, 1000, 4, "yes", "no", "2", "none", "trailer");
 		}
 
+		/// <summary>
+		/// En metod som får användaren att välja bil eller slutföra bokning
+		/// </summary>
 		public void TrailerTypeinfo() {
 			Console.WriteLine("  ------------------------------------");
 			Console.WriteLine("  1. Continue to choose car");
-			Console.WriteLine("  2. Confirm booking ");
 			Console.WriteLine("  ------------------------------------");
 
 			_chosenTrailerTypeInfo = Console.ReadLine();
 
 			if (_chosenTrailerTypeInfo == "1") {
 				Console.Clear();
-
-			} else if (_chosenTrailerTypeInfo == "2") {
-				Console.Clear();
-			}
+				MainPage();
+			} 
 		}
 
+		/// <summary>
+		/// En metod som frågar användaren om drivmedel
+		/// </summary>
 		public void FuelType() {
 			Console.WriteLine("  Which fueltype would you prefer?");
 			Console.WriteLine("  ------------------------------------");
@@ -222,6 +242,9 @@ namespace Projekt_Biluthyrning {
 			}
 		}
 
+		/// <summary>
+		/// En metod som frågar användaren om växellåda (undantag elbil)
+		/// </summary>
 		public void Gearbox() {
 			Console.WriteLine("  Which gearbox would you prefer?");
 			Console.WriteLine("  ------------------------------------");
@@ -242,6 +265,9 @@ namespace Projekt_Biluthyrning {
 			}
 		}
 
+		/// <summary>
+		/// En metod som frågar användaren om dragkrok eller inte.
+		/// </summary>
 		public void TowHitch() {
             Console.WriteLine("  Do you need towhitch?");
 			Console.WriteLine("  ------------------------------------");
@@ -260,6 +286,10 @@ namespace Projekt_Biluthyrning {
 			}
 
 		}
+		/// <summary>
+		/// En metod som väljer ut den bil som passar användarens val.
+		/// </summary>
+		/// <returns>theChosenCar</returns>
 		public CarInfo CheckOut() {
 
 			Console.WriteLine("Here is the cars best suited for you.");

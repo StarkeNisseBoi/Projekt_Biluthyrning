@@ -11,7 +11,7 @@ namespace Projekt_Biluthyrning {
 		public string VehicleType;
 
 		/// <summary>
-		/// Konstruktor
+		/// Konstruktor som skickar med värden 
 		/// </summary>
 		/// <param name="inputTotalTyres">Gör en möjlig input för TotalTyres, skickar med värden.</param>
 		/// <param name="inputFuelInfo">Gör en möjlig input för FuelInfo, skickar med värden.</param>

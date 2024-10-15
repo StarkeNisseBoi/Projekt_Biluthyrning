@@ -14,6 +14,7 @@ namespace Projekt_Biluthyrning {
 		/// </summary>
 		/// <param name="bookingSum">Sumerar personinformation</param>
 		/// <param name="carSum">Sumerar bilensinformation</param>
+
 		public void Summary(Booking bookingSum, CarInfo carSum, Trailer trailerSum) {
 			Console.WriteLine("Summary of your booking:");
 			Console.WriteLine("Name: " + bookingSum._bookingName);
@@ -25,18 +26,21 @@ namespace Projekt_Biluthyrning {
             Console.WriteLine("Pick up date: " + bookingSum._startDate);
 			Console.WriteLine("End date: " + bookingSum._endDate);
 			Console.WriteLine("-------------------------------");
+			
+			if (carSum != null) {
+				Console.WriteLine("Your booked car: " + carSum._carModel);
+				Console.WriteLine("Vehicle type: " + carSum.VehicleType);
+				Console.WriteLine("Fuel: " + carSum.FuelInfo);
+				Console.WriteLine("Transmission: " + carSum._gearBox);
+				Console.WriteLine("Tow hitch: " + carSum._towHitch);
+				Console.WriteLine("Tow capacity: " + carSum._towCapacity + " kg");
+				Console.WriteLine("Total horsepower: " + carSum._horsepower + " hp");
+				Console.WriteLine("Number of doors: " + carSum._doors);
+				Console.WriteLine("-------------------------------");
+			}
+	
 
-			Console.WriteLine("Your booked car: " + carSum._carModel);
-			Console.WriteLine("Vehicle type: " + carSum.VehicleType);
-			Console.WriteLine("Fuel: " + carSum.FuelInfo);
-			Console.WriteLine("Transmission: " + carSum._gearBox);
-			Console.WriteLine("Tow hitch: " + carSum._towHitch);
-			Console.WriteLine("Tow capacity: " + carSum._towCapacity + " kg");
-			Console.WriteLine("Total horsepower: " + carSum._horsepower + " hp");
-			Console.WriteLine("Number of doors: " + carSum._doors);
-            Console.WriteLine("-------------------------------");
-
-			if (UserInterface) {
+			if (trailerSum != null) {
 				Console.WriteLine("Your chosen trailer: " + trailerSum._trailerType);
 				Console.WriteLine("Max load: " + trailerSum._maxLoad);
 				Console.WriteLine("Volume: " + trailerSum._volume);
@@ -44,7 +48,7 @@ namespace Projekt_Biluthyrning {
 				Console.WriteLine("Unbraked: " + trailerSum._unbraked);
 				Console.WriteLine("Number of tyres: " + trailerSum.TotalTyres);
 				Console.WriteLine("Fuel: " + trailerSum.FuelInfo);
-				Console.WriteLine("Vehicle type " + trailerSum.VehicleType);
+				Console.WriteLine("Vehicle type: " + trailerSum.VehicleType);
 			}
 		}
 	}

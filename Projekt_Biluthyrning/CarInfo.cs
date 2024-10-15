@@ -68,7 +68,7 @@ namespace Projekt_Biluthyrning {
 		}
 
 		/// <summary>
-		/// Konstruktor
+		/// Konstruktor som skckar med värden
 		/// </summary>
 		/// <param name="inputHorsepower">Gör en möjlig input för _horsepower, skickar med värden.</param>
 		/// <param name="inputTowCapacity">Gör en möjlig input för _towCapacity, skickar med värden.</param>
@@ -113,18 +113,14 @@ namespace Projekt_Biluthyrning {
 		};
 
 		/// <summary>
-		/// I denna metod finns list
+		/// I denna metod finns list, kollar igenom vilken bil som passar användaren genom uteslutning
 		/// </summary>
 		/// <param name="inputCarType"></param>
 		/// <param name="inputGearbox"></param>
 		/// <param name="inputFueltype"></param>
 		/// <param name="inputTowHitch"></param>
-		/// <returns></returns>
+		/// <returns>AvailableCars</returns>
 		public static List<CarInfo> MethodOfElimination(string inputCarType, string inputGearbox, string inputFueltype, string inputTowHitch) {
-			//Console.WriteLine(inputCarType);
-			//Console.WriteLine(inputGearbox);
-			//Console.WriteLine(inputFueltype);
-			//Console.WriteLine(inputTowHitch);
 			List<CarInfo> AvailableCars = new List<CarInfo>();
 			for (int i = 0; i < ListOfAvaiableCars.Count; i++) { 
 				if (ListOfAvaiableCars[i].VehicleType == inputCarType && ListOfAvaiableCars[i]._gearBox == inputGearbox && ListOfAvaiableCars[i].FuelInfo == inputFueltype) {

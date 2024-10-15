@@ -13,7 +13,7 @@ namespace Projekt_Biluthyrning {
 		public string _unbraked;
 
 		/// <summary>
-		/// Konstruktor
+		/// Konstruktor som skickar med värden
 		/// </summary>
 		/// <param name="inputTrailerType">Gör en möjlig input för _trailerType, skickar med värden.</param>
 		/// <param name="inputMaxLoad">Gör en möjlig input för _maxload, skickar med värden.</param>
@@ -32,10 +32,10 @@ namespace Projekt_Biluthyrning {
 		}
 
 
-		List<Trailer> ListOfTrailers = new List<Trailer> {
-			new Trailer("Enclosed trailer", 1000, 5, "Braked", "", "4", "None", "Trailer" ),
-			new Trailer("Grating trailer", 500, 2, "", "Unbraked", "2", "None", "Trailer")
-		};
+		//List<Trailer> ListOfTrailers = new List<Trailer> {
+		//	new Trailer("Enclosed trailer", 1000, 5, "Braked", "", "4", "None", "Trailer" ),
+		//	new Trailer("Grating trailer", 500, 2, "", "Unbraked", "2", "None", "Trailer")
+		//};
 
 
 	}

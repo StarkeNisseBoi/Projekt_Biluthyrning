@@ -15,6 +15,17 @@ namespace Projekt_Biluthyrning {
 		public string _startDate;
 		public string _endDate;
 
+		/// <summary>
+		/// Konstruktor som skickar med värden
+		/// </summary>
+		/// <param name="inputBookingName">Gör en möjlig input för _bookingName, skickar med värden.</param>
+		/// <param name="inputAge">Gör en möjlig input för _age, skickar med värden.</param>
+		/// <param name="inputAddress">Gör en möjlig input för _address, skickar med värden.</param>
+		/// <param name="inputMail">Gör en möjlig input för _mail, skickar med värden.</param>
+		/// <param name="inputPhoneNumber">Gör en möjlig input för _phoneNumber, skickar med värden.</param>
+		/// <param name="inputPickUpLocation">Gör en möjlig input för _pickUpLocation, skickar med värden.</param>
+		/// <param name="inputStartDate">Gör en möjlig input för _startDate, skickar med värden.</param>
+		/// <param name="inputEndDate">Gör en möjlig input för _endDate, skickar med värden.</param>
 		public Booking(string inputBookingName, int inputAge, string inputAddress, string inputMail, string inputPhoneNumber, string inputPickUpLocation,string inputStartDate, string inputEndDate ) {
 			_bookingName = inputBookingName;
 			_age = inputAge;
