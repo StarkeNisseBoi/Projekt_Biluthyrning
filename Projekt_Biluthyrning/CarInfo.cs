@@ -13,6 +13,72 @@ namespace Projekt_Biluthyrning {
 		public string _gearBox;
 		public string _carModel;
 
+		public int HorsePower {
+			get{
+				return _horsepower;
+			}
+			set{
+				_horsepower = value;
+			}
+		}
+
+		public int TowCapacity {
+			get {
+				return _towCapacity;
+			}
+			set {
+				_towCapacity = value;
+			}
+		}
+
+		public int Doors {
+			get {
+				return _doors;
+			}
+			set {
+				_doors = value;
+			}
+		}
+
+		public string TowHitch {
+			get {
+				return _towHitch;
+			}
+			set {
+				_towHitch = value;
+			}
+		}
+
+		public string GearBox {
+			get {
+				return _gearBox;
+			}
+			set {
+				_gearBox = value;
+			}
+		}
+
+		public string CarModel {
+			get {
+				return _carModel;
+			}
+			set {
+				_carModel = value;
+			}
+		}
+
+		/// <summary>
+		/// Konstruktor
+		/// </summary>
+		/// <param name="inputHorsepower">Gör en möjlig input för _horsepower, skickar med värden.</param>
+		/// <param name="inputTowCapacity">Gör en möjlig input för _towCapacity, skickar med värden.</param>
+		/// <param name="inputDoors">Gör en möjlig input för _doors, skickar med värden.</param>
+		/// <param name="inputTowHitch">Gör en möjlig input för _towHitch, skickar med värden.</param>
+		/// <param name="inputGearbox">Gör en möjlig input för _gearBox, skickar med värden.</param>
+		/// <param name="inputTotalTyres">Gör en möjlig input för TotalTyres, skickar med värden.</param>
+		/// <param name="inputFuelInfo">Gör en möjlig input för FuelInfo, skickar med värden.</param>
+		/// <param name="inputVehicleType">Gör en möjlig input för VehicleType, skickar med värden.</param>
+		/// <param name="inputCarModel">Gör en möjlig input för _carModel, skickar med värden.</param>
 		public CarInfo(int inputHorsepower, int inputTowCapacity, int inputDoors, string inputTowHitch, string inputGearbox, string inputTotalTyres, string inputFuelInfo, string inputVehicleType, string inputCarModel) : 
 			base(inputTotalTyres, inputFuelInfo, inputVehicleType) {
 			_horsepower = inputHorsepower;
@@ -24,6 +90,9 @@ namespace Projekt_Biluthyrning {
 			
 		}
 
+		/// <summary>
+		/// En list där värderna på bilarna finns
+		/// </summary>
 		static List<CarInfo> ListOfAvaiableCars = new List<CarInfo>() {
 			new CarInfo(250, 1000,4,"yes","Automatic", "4", "Diesel", "Sedan", "Volvo S60"),
 			new CarInfo(120, 0,4,"no","Manual", "4", "Petrol", "Sedan", "Volvo S70"),
@@ -43,6 +112,14 @@ namespace Projekt_Biluthyrning {
 
 		};
 
+		/// <summary>
+		/// I denna metod finns list
+		/// </summary>
+		/// <param name="inputCarType"></param>
+		/// <param name="inputGearbox"></param>
+		/// <param name="inputFueltype"></param>
+		/// <param name="inputTowHitch"></param>
+		/// <returns></returns>
 		public static List<CarInfo> MethodOfElimination(string inputCarType, string inputGearbox, string inputFueltype, string inputTowHitch) {
 			//Console.WriteLine(inputCarType);
 			//Console.WriteLine(inputGearbox);

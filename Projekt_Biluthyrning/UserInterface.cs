@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace Projekt_Biluthyrning {
 	internal class UserInterface {
-		protected  string _chosenVehicle;
-		protected  string _chosenTrailerType;
+		protected string _chosenVehicle;
+		protected string _chosenTrailerType;
 		protected string _chosenTrailerTypeInfo;
 		protected string _chosenFuelType;
 		protected string _chosenGearbox;
 		protected string _chosenTowHitch;
+		protected Trailer _trailer;
 
 		public void StarPage() {
             Console.WriteLine("  ----------------------------" );
@@ -25,20 +26,18 @@ namespace Projekt_Biluthyrning {
 			Booking bookingLastInfo = BookingDetail();
 
 			MainPage();
-			FuelType();
-			Gearbox();
-			TowHitch();
-			TrailerType();
-			
-
 			
 			CarInfo vehicleSpecification = CheckOut();
 			LastInfo lastInfo = new LastInfo();
-			lastInfo.Summary(bookingLastInfo, vehicleSpecification);
+			lastInfo.Summary(bookingLastInfo, vehicleSpecification, );
+
 		}
 
 	
-
+		/// <summary>
+		/// En metod som tar input om namn etc till bokning
+		/// </summary>
+		/// <returns></returns>
 		public Booking BookingDetail() {
 			Console.WriteLine("Please, write your first- and lastname.");
 			string inputName = Console.ReadLine();
@@ -157,14 +156,14 @@ namespace Projekt_Biluthyrning {
 			}
 
 
-			//CarInfo.MethodOfElimination()
+			CarInfo.MethodOfElimination()
 
 		}
 
-		public bool TrailerType() {
+		public void TrailerType() {
 			Console.WriteLine("  ------------------------------------");
-            Console.WriteLine("  1. Enclosed trailer");
-            Console.WriteLine("  2. Grating trailer");
+			Console.WriteLine("  1. Enclosed trailer");
+			Console.WriteLine("  2. Grating trailer");
 			Console.WriteLine("  ------------------------------------");
 
 			_chosenTrailerType = Console.ReadLine();
@@ -173,16 +172,15 @@ namespace Projekt_Biluthyrning {
 				_chosenTrailerType = "Enclosed trailer";
 				Console.Clear();
 				TrailerTypeinfo();
-			}else if (_chosenTrailerType == "2") {
+			} else if (_chosenTrailerType == "2") {
 				_chosenTrailerType = "Grating trailer";
 				Console.Clear();
-				return TrailerTypeinfo();
+				TrailerTypeinfo();
 			}
-
-			return false;
+			_trailer
 		}
 
-		public bool TrailerTypeinfo() {
+		public void TrailerTypeinfo() {
 			Console.WriteLine("  ------------------------------------");
 			Console.WriteLine("  1. Continue to choose car");
 			Console.WriteLine("  2. Confirm booking ");
@@ -192,11 +190,10 @@ namespace Projekt_Biluthyrning {
 
 			if (_chosenTrailerTypeInfo == "1") {
 				Console.Clear();
-				return false;
-			} else if (_chosenTrailerTypeInfo == "2") {
-				return true;
-			}
 
+			} else if (_chosenTrailerTypeInfo == "2") {
+				Console.Clear();
+			}
 		}
 
 		public void FuelType() {
@@ -256,10 +253,10 @@ namespace Projekt_Biluthyrning {
 
 			if (_chosenTowHitch == "1") {
 				_chosenTowHitch = "yes";
-				CheckOut();
+				
 			}else if (_chosenTowHitch == "2") {
 				_chosenTowHitch = "no";
-				CheckOut();
+				
 			}
 
 		}
@@ -268,12 +265,18 @@ namespace Projekt_Biluthyrning {
 			Console.WriteLine("Here is the cars best suited for you.");
 			List<CarInfo> PossibleCars = CarInfo.MethodOfElimination(_chosenVehicle, _chosenGearbox, _chosenFuelType, _chosenTrailerType);
 			for (int i = 0; i < PossibleCars.Count; i++) {
-				Console.WriteLine(PossibleCars[i]._carModel);
+				Console.WriteLine("1. " + PossibleCars[i]._carModel);
 			}
 
 
+			Console.WriteLine("Press '1' to check out.");
 			string inputChosenCar = Console.ReadLine();
 			int inputChosenCarAsInt = int.Parse(inputChosenCar);
+			while (inputChosenCar == "") {
+				Console.WriteLine("Invalid input.");
+				inputChosenCar = Console.ReadLine();
+			}
+
 			CarInfo theChosenCar = PossibleCars[inputChosenCarAsInt - 1];
 
 			return theChosenCar;

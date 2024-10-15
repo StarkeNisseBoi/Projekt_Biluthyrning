@@ -10,17 +10,16 @@ namespace Projekt_Biluthyrning {
 		public string FuelInfo;
 		public string VehicleType;
 
+		/// <summary>
+		/// Konstruktor
+		/// </summary>
+		/// <param name="inputTotalTyres">Gör en möjlig input för TotalTyres, skickar med värden.</param>
+		/// <param name="inputFuelInfo">Gör en möjlig input för FuelInfo, skickar med värden.</param>
+		/// <param name="inputVehicleType">Gör en möjlig input för VehicleType, skickar med värden.</param>
 		public VehicleInfo(string inputTotalTyres, string inputFuelInfo, string inputVehicleType) {
 			TotalTyres = inputTotalTyres;
 			FuelInfo = inputFuelInfo;
 			VehicleType = inputVehicleType;
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		public void PrintVehicle() {
-            Console.WriteLine("Your vehicle type: " + VehicleType + " FuelInfo: " + FuelInfo + " Tires: " + TotalTyres);
 		}
 	}
 }
